@@ -1,11 +1,16 @@
 /* DEFINITIONS */
 let imgs
 
+/*
 var fs = import('fs');
 imgs = fs.readFileSync('./imgs.log').toString().split("\n");
 for(i in array) {
     console.log(array[i]);
 }
+*/
+
+imgs = import("./imgs.json")
+
 
 console.log(imgs)
 
