@@ -31,6 +31,27 @@ const imgs = [
   "xp7O_cR6lhw.jpg",
 ];
 
+const createRow = ( idx, rootContainer ) => {
+  if (idx == 0){
+    let element = document.createElement("div")
+    element.className = "row"
+    rootContainer.appendChild(element)
+  }
+}
+
+const createColumn = ( idx, rowIdx , rootContainer ) => {
+  let element = document.createElement("div")
+  element.className = "col"
+  rootContainer.children[rowIdx].appendChild(element)
+}
+
+const createImgFromIdx = ( idx, rowIdx , rootContainer ) => {
+  let element = document.createElement("img")
+  element.setAttribute("src", `./imgs/${imgs[rowIdx*4+idx]}`)
+  rootContainer.children[rowIdx].children[idx].appendChild(element)
+}
+
+
 
 const BREAKPOINT = 4
 let idx = 0
@@ -42,6 +63,8 @@ console.log(rootContainer)
 imgs.forEach((img) => {
   // console.log(`idx = ${idx}, rowIdx = ${rowIdx}`)
   createRow(idx, rootContainer)
+  createColumn(idx, rowIdx, rootContainer)
+  createImgFromIdx(idx, rowIdx, rootContainer)
 
   idx = (++idx) % 4
   if (idx  === 0){
@@ -50,10 +73,3 @@ imgs.forEach((img) => {
   
 })
 
-createRow = ( idx, rootContainer ) => {
-  if (idx == 0){
-    let element = document.createElement("div")
-    element.className = "row"
-    rootContainer.children.push(element)
-  }
-}
