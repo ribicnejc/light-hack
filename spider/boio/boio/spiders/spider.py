@@ -27,4 +27,5 @@ class SpiderSpider(scrapy.Spider):
         img = response.css('div.image-container img.screenshot-image::attr(src)').extract_first()
         utils.save_image(img)
         print("Scraped image: " + img)
+        utils.log_url(self.parent_url)
         pass
