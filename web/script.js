@@ -30,3 +30,30 @@ const imgs = [
   "xV8GR_fi_3g.jpg",
   "xp7O_cR6lhw.jpg",
 ];
+
+
+const BREAKPOINT = 4
+let idx = 0
+let rowIdx = 0
+rootContainer = document.getElementById("container")
+
+console.log(rootContainer)
+
+imgs.forEach((img) => {
+  // console.log(`idx = ${idx}, rowIdx = ${rowIdx}`)
+  createRow(idx, rootContainer)
+
+  idx = (++idx) % 4
+  if (idx  === 0){
+    rowIdx++
+  }
+  
+})
+
+createRow = ( idx, rootContainer ) => {
+  if (idx == 0){
+    let element = document.createElement("div")
+    element.className = "row"
+    rootContainer.children.push(element)
+  }
+}
