@@ -19,7 +19,7 @@ def log_url(url):
 
 
 def is_already_scraped(url):
-    filename = 'scraped.log'
+    filename = './utils/scraped.log'
     with open(filename) as f:
         is_scraped = url in f.read()
         f.close()
@@ -30,3 +30,9 @@ def write_combination(string):
     filename = 'urls.log'
     with open(filename, 'a+') as f:
         f.write(string + "\n")
+
+
+def save_image(img):
+    filename = '../../../web/imgs.log'
+    with open(filename, 'a+') as f:
+        f.write(img + "\n")
