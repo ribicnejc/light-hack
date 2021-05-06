@@ -48,6 +48,8 @@ const createColumn = ( idx, rowIdx , rootContainer ) => {
 const createImgFromIdx = ( idx, rowIdx , rootContainer ) => {
   let element = document.createElement("img")
   element.setAttribute("src", `./imgs/${imgs[rowIdx*4+idx]}`)
+  element.setAttribute("id", rowIdx*4+idx)
+  element.addEventListener("click", onClicked)
   rootContainer.children[rowIdx].children[idx].appendChild(element)
 }
 
