@@ -1,11 +1,20 @@
 /* DEFINITIONS */
+let imgs
+
+var fs = import('fs');
+imgs = fs.readFileSync('./imgs.log').toString().split("\n");
+for(i in array) {
+    console.log(array[i]);
+}
+
+console.log(imgs)
 
 const BREAKPOINT = 4
 let idx = 0
 let rowIdx = 0
 rootContainer = document.getElementById("container")
 
-const imgs = [
+const dummyImgs = [
   "-BnUKtXvBVQ.jpg",
   "-TMwLjUcT7w.jpg",
   "0DxLnBmuAyo.jpg",
@@ -37,6 +46,7 @@ const imgs = [
   "xV8GR_fi_3g.jpg",
   "xp7O_cR6lhw.jpg",
 ];
+
 
 /* Non pure functions */
 
