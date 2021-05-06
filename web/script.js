@@ -1,3 +1,10 @@
+/* DEFINITIONS */
+
+const BREAKPOINT = 4
+let idx = 0
+let rowIdx = 0
+rootContainer = document.getElementById("container")
+
 const imgs = [
   "-BnUKtXvBVQ.jpg",
   "-TMwLjUcT7w.jpg",
@@ -31,42 +38,54 @@ const imgs = [
   "xp7O_cR6lhw.jpg",
 ];
 
-const createRow = ( idx, rootContainer ) => {
-  if (idx == 0){
+/* Non pure functions */
+
+const createRow = ( row ) => {
+  if (idx === 0){
     let element = document.createElement("div")
     element.className = "row"
     rootContainer.appendChild(element)
+    return element
   }
+  return row
+
 }
 
-const createColumn = ( idx, rowIdx , rootContainer ) => {
+
+const createColumn = ( daddy  ) => {
   let element = document.createElement("div")
   element.className = "col"
-  rootContainer.children[rowIdx].appendChild(element)
+  daddy.appendChild(element)
+  return element
 }
 
-const createImgFromIdx = ( idx, rowIdx , rootContainer ) => {
+const createAnchor = ( daddy  ) => {
+
+  let element = document.createElement("a")
+  element.setAttribute("href", `./imgs/${imgs[rowIdx*4+idx]}`)
+  daddy.appendChild(element)
+  return element
+}
+
+const createImgFromIdx = ( daddy  ) => {
   let element = document.createElement("img")
   element.setAttribute("src", `./imgs/${imgs[rowIdx*4+idx]}`)
   element.setAttribute("id", rowIdx*4+idx)
-  element.addEventListener("click", onClicked)
-  rootContainer.children[rowIdx].children[idx].appendChild(element)
+  //element.addEventListener("click", onClicked)
+  daddy.appendChild(element)
 }
 
 
-
-const BREAKPOINT = 4
-let idx = 0
-let rowIdx = 0
-rootContainer = document.getElementById("container")
-
+ /* CORE */
 console.log(rootContainer)
-
+let row = null
 imgs.forEach((img) => {
   // console.log(`idx = ${idx}, rowIdx = ${rowIdx}`)
-  createRow(idx, rootContainer)
-  createColumn(idx, rowIdx, rootContainer)
-  createImgFromIdx(idx, rowIdx, rootContainer)
+  let elt;
+  row = createRow(row)
+  elt = createColumn(row)
+  elt = createAnchor(elt)
+  elt = createImgFromIdx(elt)
 
   idx = (++idx) % 4
   if (idx  === 0){
